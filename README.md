@@ -19,7 +19,7 @@ git clone https://github.com/seyyedBagherMusavi/bontech.git
 
 2. Navigate to the project directory and run mysql docker:
 ```shell
-cd GeoFind && docker-compose -f mysql.yml up -d
+cd bontech && docker-compose -f mysql.yml up -d
 ```
 3.Build & run project with mvn command or anything else :)
 
