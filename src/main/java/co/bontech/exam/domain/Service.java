@@ -1,8 +1,11 @@
 package co.bontech.exam.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalTime;
+import java.io.Serial;
+import java.time.LocalDateTime;
 
 
 /**
@@ -10,9 +13,11 @@ import java.time.LocalTime;
  */
 @Entity
 @Table(name = "service")
-@SuppressWarnings("common-java:DuplicatedBlocks")
+@Getter
+@Setter
 public class Service extends BaseEntity {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,9 +29,9 @@ public class Service extends BaseEntity {
 
     private Integer cost;
 
-    private LocalTime lastStartAvailability;
+    private LocalDateTime lastStartAvailability;
 
-    private LocalTime lastEndAvailability;
+    private LocalDateTime lastEndAvailability;
 
 
 }
