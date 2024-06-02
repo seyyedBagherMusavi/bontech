@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findOneByLogin(String login);
+    Optional<User> findOneByUserName(String login);
 
     @Query(
             value = """

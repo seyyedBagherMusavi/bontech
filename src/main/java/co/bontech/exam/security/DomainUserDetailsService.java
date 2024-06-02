@@ -31,7 +31,7 @@ public class DomainUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(final String userName) {
         log.debug("Authenticating {}", userName);
         return userRepository
-            .findOneByLogin(userName)
+            .findOneByUserName(userName)
             .map(this::createSpringSecurityUser)
             .orElseThrow(() -> new UsernameNotFoundException("User " + userName + " was not found in the database"));
     }
@@ -39,7 +39,9 @@ public class DomainUserDetailsService implements UserDetailsService {
     private org.springframework.security.core.userdetails.User createSpringSecurityUser( User user) {
         List<SimpleGrantedAuthority> grantedAuthorities =
                 List.of(new SimpleGrantedAuthority(user.getAuthority().name()));
-        return new org.springframework.security.core.userdetails.User(user.getLogin(),
+        MyPrincipal myPrincipal = new MyPrincipal(user.getUserName(),
                 user.getPassword(), grantedAuthorities);
+        myPrincipal.setUserId(user.getId());
+        return myPrincipal;
     }
 }

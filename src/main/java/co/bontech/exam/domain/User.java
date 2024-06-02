@@ -3,7 +3,6 @@ package co.bontech.exam.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -29,7 +28,7 @@ public class User extends BaseEntity {
 
     @Size(max = 50)
     @Column(name = "user_name", length = 50)
-    private String login;
+    private String userName;
 
     @Size(max = 50)
     @Column(name = "first_name", length = 50)
@@ -41,9 +40,6 @@ public class User extends BaseEntity {
 
     @Column(name="inventory",columnDefinition = "int default 0")
     private Integer inventory;
-
-
-
 
     @Column(name = "authority")
     @Enumerated(EnumType.STRING)
