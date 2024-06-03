@@ -100,4 +100,10 @@ public class SmsServiceImp {
         }
         else throw new RuntimeException(" not enough credit");
     }
+
+    @Transactional
+    public void save(ServiceDTO serviceDTO) {
+        co.bontech.exam.domain.Service service = smsServiceMapper.toEntity(serviceDTO);
+        serviceRepository.save(service);
+    }
 }

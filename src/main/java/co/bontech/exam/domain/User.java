@@ -5,13 +5,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * A user.
  */
 @Entity
 @Table(name = "tbl_user123")
-@Data
+@Getter@Setter
 public class User extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

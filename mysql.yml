@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+    bontech-mysql:
+        container_name: bontech-mysql
+        image: mysql:8.0.30-debian
+        command: ['mysqld', '--character-set-server=utf8','--sql_mode=', '--collation-server=utf8_persian_ci']
+        volumes:
+            - ./mysql-prod-data:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: bontech
+            MYSQL_USER: bontech
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_ROOT_HOST: '%'
+        ports:
+            - 3306:3306

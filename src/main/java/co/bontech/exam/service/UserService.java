@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -19,8 +21,9 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     @Transactional
-    public void addUserInv(Long userId, Integer debit,int version) {
-        userRepository.addDebit(userId,debit,version);
+    public void addUserInv(Long userId, Integer debit) {
+        User byId = userRepository.findById(userId).orElseThrow();
+        byId.setInventory(debit+byId.getInventory());
     }
 
     @Transactional

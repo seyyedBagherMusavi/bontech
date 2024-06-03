@@ -4,6 +4,7 @@ import co.bontech.exam.rest.vm.ServiceVM;
 import co.bontech.exam.service.SmsServiceImp;
 import co.bontech.exam.service.UserService;
 import co.bontech.exam.service.dto.ServiceCreditReportDTO;
+import co.bontech.exam.service.dto.ServiceDTO;
 import co.bontech.exam.service.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +31,8 @@ public class AdminRest {
     @PutMapping("/add-user-inv")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> addUserInv(@RequestParam(name = "userId") Long userId,
-                                           @RequestParam(name = "debit") Integer debit,
-                                           @RequestParam(name = "version") int version){
-        userService.addUserInv(userId,debit,version);
+                                           @RequestParam(name = "debit") Integer debit){
+        userService.addUserInv(userId,debit);
         return  ResponseEntity.ok().build();
     }
 
@@ -55,6 +55,13 @@ public class AdminRest {
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> createUser(@Validated @RequestBody UserDTO userDTO){
         userService.save(userDTO);
+        return  ResponseEntity.ok().build();
+    }
+
+    @PostMapping("create-service")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<Void> createUser(@Validated @RequestBody ServiceDTO serviceDTO){
+        smsServiceImp.save(serviceDTO);
         return  ResponseEntity.ok().build();
     }
 
