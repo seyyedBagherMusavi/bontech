@@ -22,7 +22,7 @@ git clone https://github.com/seyyedBagherMusavi/bontech.git
 cd bontech && docker-compose -f mysql.yml up -d
 ```
 3.Build & run project with mvn command or anything else :)
-
+4.watch swagger http://localhost:8080/swagger-ui/index.html
 
 # 💻 Tech Stack:
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
